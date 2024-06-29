@@ -156,7 +156,7 @@ footer {
     border-radius: 20px; /* Rounded corners for the form */
     padding: 40px; /* Padding inside the form container */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Adding a subtle shadow effect */
-    border: 2px solid #343a40; /* Border color */
+    border: 2px solid powderblue; /* Border color */
 }
 
 .signup-form-container h2 {
@@ -230,6 +230,7 @@ input[type="checkbox"] {
     border-radius: 60px; /* Rounded border with large radius */
     padding: 20px; /* Padding inside the div */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    border: 2px solid powderblue;
 }
 
 /* Specific Section Styles */
@@ -239,6 +240,7 @@ input[type="checkbox"] {
     border-radius: 60px; /* Rounded border with large radius */
     padding: 20px; /* Padding inside the div */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    border: 2px solid powderblue;
 }
 
 
