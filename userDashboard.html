@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Application Website</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+   
+</head>
+
+<body>
+
+    <header class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <div class="header-content">
+                <img src="./assets/images/logo.jpg" alt="Passport Logo">
+                <div class="ms-3">
+                    <h1 class="mb-0">Passport Seva</h1>
+                    <h5 class="mb-0">PSP Division</h5>
+                    <h5 class="mb-0">Ministry of External Affairs, Government of India</h5>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-header mt-3">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="./userDashboard.html">
+                                    <i class="bi bi-speedometer2"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./newApplication.html">
+                                    <i class="fa fa-passport"></i> Apply for New Passport
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./renewalApplication.html">
+                                    <i class="fa fa-passport"></i> Apply for Renewal Passport
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./payment.html">
+                                    <i class="fa fa-credit-card"></i> Make Payment
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./applicationStatus.html">
+                                    <i class="bi bi-table"></i> Application Status
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./feedback.html">
+                                    <i class="bi bi-grid"></i> Customer Feedback
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">
+                                    <i class="bi bi-info-circle"></i> About Us
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact">
+                                    <i class="bi bi-telephone"></i> Contact Us
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index.html">
+                                    <i class="bi bi-box-arrow-right"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="container my-4">
+        <div class="row justify-content-center align-items-center">
+            <!-- Image Section -->
+            <div class="col-md-4">
+                <div class="image-container">
+                    <img src="./assets/images/passportImage1.jpg"  alt="Passport Image" class="img-fluid  ">
+                </div>
+            </div>
+            <!-- Content Area -->
+            <div class="col-md-8 mt-4" id="contentDiv">
+                <div class="content center-content rounded bg-burlywood p-4">
+                    <h3 class="text-center mb-4">Welcome to Passport Application HomePage</h3>
+                    <h5>Steps to Apply for New Passport</h5>
+                    <ol type="1">
+                        <li>Register/login on the official passport website.</li>
+                        <li>Fill the application form, upload required documents.</li>
+                        <li>Pay the fee.</li>
+                        <li>Schedule appointment.</li>
+                        <li>Visit Passport Seva Kendra (PSK) for verification.</li>
+                        <li>Track application status.</li>
+                    </ol>
+                    <p>If you have any questions or concerns about the passport application process, please <a
+                            href="https://portal2.passportindia.gov.in/AppOnlineProject/ccgm/informationAction">Contact
+                            us</a>. We are here to help you.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-footer">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarFooter"
+                        aria-controls="navbarFooter" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarFooter">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms & Conditions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <p>&copy; 2024 Passport Seva. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-mrUG8KnTo+ddJ8h+RmOqDqR/zr3du6fmT0xy2V3+ow1bsVmyI3MWhgb5fJ0ceL8u"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-Cr3t+1G+EAdNU1TYp8/YMpDEnd9h/aYL0r1cJXCsxMPBllFmV4xg0b02iVrLCXhC"
+        crossorigin="anonymous"></script>
+
+    <!-- SweetAlert2 library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

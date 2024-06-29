@@ -1,0 +1,125 @@
+body {
+    background-color: #EFEBDF;
+    /* Nice background color for the page */
+}
+
+.navbar-header {
+    background-color: #212529;
+    /* Background color of the header navbar */
+    border-radius: 10px;
+    /* Rounded corners for the navbar */
+}
+
+.navbar-footer {
+    background-color: #212529;
+    /* Background color of the footer navbar */
+    border: none;
+    /* Remove border */
+}
+
+.navbar-header .navbar-nav {
+    margin-left: auto;
+    /* Align navbar content to the right */
+}
+
+.navbar-footer .navbar-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Divide footer navbar into 3 equal sections */
+    gap: 0;
+    /* Remove gap between items */
+}
+
+.login-form-container {
+    background-color: burlywood;
+    border-radius: 20px;
+    /* Increased border radius for the login form */
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Adding a subtle shadow for better aesthetics */
+}
+
+.login-form-container h2 {
+    margin-bottom: 30px;
+}
+
+#loginBtn:hover {
+    background-color: lightgreen;
+    color: black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    /* Adding a shadow on hover */
+}
+
+#resetBtn:hover {
+    background-color: lightyellow;
+    color: black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    /* Adding a shadow on hover */
+}
+
+.text-center a {
+    text-decoration: none;
+    /* Remove underline from all links */
+    position: relative;
+    /* Enable absolute positioning for pseudo-element */
+    display: inline-block;
+    transition: all 0.3s ease;
+    /* Smooth transition for animation */
+    color: #fff;
+    /* Default color for links */
+}
+
+.text-center a:hover {
+    color: green;
+    /* Change text color on hover */
+}
+
+.text-center a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -1px;
+    left: 0;
+    background-color: #ffc107;
+    /* Color of the underline */
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+}
+
+.text-center a:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.header-content {
+    text-align: center;
+    margin-top: 30px; /* Adjust top margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content img {
+    width: 100px; /* Adjust image size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    margin-right: 20px; /* Space between image and text */
+}
+
+.image-container img {
+    width: 100%; /* Full width within the container */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease;
+    border-radius: 10px; /* Apply border radius to image */
+}
+.image-container:hover img {
+    transform: scale(1.03); /* Scale up image on hover */
+}
+/* Highlight input fields on hover */
+input[type="text"]:hover,
+input[type="password"]:hover {
+    border-color: #007bff; /* Change border color to a highlight color */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a light shadow for emphasis */
+}

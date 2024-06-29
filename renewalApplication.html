@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Application Website</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body>
+
+    <header class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <div class="header-content">
+                <img src="./assets/images/logo.jpg" alt="Passport Logo">
+                <div class="ms-3">
+                    <h1 class="mb-0">Passport Seva</h1>
+                    <h5 class="mb-0">PSP Division</h5>
+                    <h5 class="mb-0">Ministry of External Affairs, Government of India</h5>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-header mt-3">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link " href="./userDashboard.html">
+                                    <i class="bi bi-speedometer2"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="./newApplication.html">
+                                    <i class="fa fa-passport"></i> Apply for New Passport
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="./renewalApplication.html">
+                                    <i class="fa fa-passport"></i> Apply for Renewal Passport
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./payment.html">
+                                    <i class="fa fa-credit-card"></i> Make Payment
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./applicationStatus.html">
+                                    <i class="bi bi-table"></i> Application Status
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./feedback.html">
+                                    <i class="bi bi-grid"></i> Customer Feedback
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">
+                                    <i class="bi bi-info-circle"></i> About Us
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact">
+                                    <i class="bi bi-telephone"></i> Contact Us
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index.html">
+                                    <i class="bi bi-box-arrow-right"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-4">
+        <div class="row justify-content-center align-items-center">
+            <!-- Tabbed Form Section -->
+            <div class="col-md-12" id="tabbedForm">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Passport Application Form</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs bg-light" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="service-tab" data-bs-toggle="tab"
+                                    data-bs-target="#service" type="button" role="tab" aria-controls="service"
+                                    aria-selected="true">Service Required</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="applicant-tab" data-bs-toggle="tab"
+                                    data-bs-target="#applicant" type="button" role="tab" aria-controls="applicant"
+                                    aria-selected="false">Applicants Details</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="residential-tab" data-bs-toggle="tab"
+                                    data-bs-target="#residential" type="button" role="tab" aria-controls="residential"
+                                    aria-selected="false">Residential Details</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="emergency-tab" data-bs-toggle="tab"
+                                    data-bs-target="#emergency" type="button" role="tab" aria-controls="emergency"
+                                    aria-selected="false">Emergency Contact</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="other-tab" data-bs-toggle="tab" data-bs-target="#other"
+                                    type="button" role="tab" aria-controls="other" aria-selected="false">Other</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="declaration-tab" data-bs-toggle="tab"
+                                    data-bs-target="#declaration" type="button" role="tab" aria-controls="declaration"
+                                    aria-selected="false">Self Declaration</button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="service" role="tabpanel"
+                                aria-labelledby="service-tab">
+                                <!-- Service Tab Content -->
+                                <form>
+                                    <!-- Existing Section 1.1 -->
+                                    <div class="row m-1">
+                                        <label class="mb-1">1.1 Service Required</label>
+                                        <div class="col-auto">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="application_type"
+                                                    id="normalRadio" value="normal" required>
+                                                <label class="form-check-label" for="normalRadio">Normal</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="application_type"
+                                                    id="tatkaalRadio" value="tatkaal" required>
+                                                <label class="form-check-label" for="tatkaalRadio">Tatkaal</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Existing Select dropdowns -->
+                                    <div class="form-group m-2">
+                                        <label class="mb-1">1.2 Type of Passport Booklet:</label>
+                                        <select name="passport_booklet_type" class="form-control" required>
+                                            <option value="36_pages">36 Pages</option>
+                                            <option value="60_pages">60 Pages</option>
+                                        </select>
+                                    </div>
+                                    <!-- Additional Section 1.1 -->
+                                    <div class="form-group m-2">
+                                        <label class="mb-1">1.3 If re-issue, specify reason(s):</label>
+                                        <select name="reissue_reason" class="form-control">
+                                            <option value="validity_expired_3_years">Validity Expired within 3 years/
+                                                Due to Expire</option>
+                                            <option value="pages_exhausted">Exhaustion of Pages</option>
+                                            <option value="validity_expired_more_than_3_years">Validity Expired more
+                                                than 3 years ago</option>
+                                            <option value="lost_passport">Lost Passport</option>
+                                            <option value="change_in_personal_particulars">Change in Existing Personal
+                                                Particulars</option>
+                                            <option value="damaged_passport">Damaged Passport</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group m-2">
+                                        <label class="mb-1">1.4 Validity Required:</label>
+                                        <select name="validity_required" class="form-control" required>
+                                            <option value="10_years">10 Years</option>
+                                            <option value="up_to_age_18">Up to age 18 (For minors between 15 and 18
+                                                years)</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Additional Section 1.2 -->
+                                    <div class="form-group m-2">
+                                        <label class="mb-1">1.5 If change in existing personal particulars, specify
+                                            reason(s)</label>
+                                        <select name="personal_particulars_change_reason" class="form-control">
+                                            <option value="appearance">Appearance</option>
+                                            <option value="signature">Signature</option>
+                                            <option value="given_name">Given Name</option>
+                                            <option value="surname">Surname</option>
+                                            <option value="dob">Date of Birth</option>
+                                            <option value="spouse_name">Spouse Name</option>
+                                            <option value="address">Address</option>
+                                            <option value="delete_ecr">Delete ECR</option>
+                                            <option value="others">Others, Please specify</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Additional Section 1.3 -->
+                                    <div class="form-group m-2">
+                                        <label><em>Reason for change (if applicable): </em></label>
+                                        <input type="text" name="change_reason" class="form-control" required
+                                            minlength="1" maxlength="200">
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="form-buttons text-center mt-1">
+                                            <button type="submit" class="btn btn-success me-2" id="saveBtn">Save</button>
+                                            <button type="button" class="btn btn-secondary me-2" id="nextBtn">Next</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <div class="tab-pane fade" id="applicant" role="tabpanel" aria-labelledby="applicant-tab">
+                                <form>
+                                    <div class="row g-3">
+                                        <!-- Row 1 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">First Name:</label>
+                                                <input type="text" class="form-control" name="given_name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Surname:</label>
+                                                <input type="text" class="form-control" name="surname" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 2 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Are you known by any other names
+                                                    (aliases)?</label>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" class="form-check-input"
+                                                        name="known_by_other_names" id="aliases_yes" value="yes">
+                                                    <label class="form-check-label" for="aliases_yes">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" class="form-check-input"
+                                                        name="known_by_other_names" id="aliases_no" value="no">
+                                                    <label class="form-check-label" for="aliases_no">No</label>
+                                                </div>
+                                                <input type="text" class="form-control mt-2" name="aliases"
+                                                    minlength="1" maxlength="45" placeholder="Provide aliases if yes">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Have you ever changed your name?</label>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" class="form-check-input" name="changed_name"
+                                                        id="changed_name_yes" value="yes">
+                                                    <label class="form-check-label" for="changed_name_yes">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" class="form-check-input" name="changed_name"
+                                                        id="changed_name_no" value="no">
+                                                    <label class="form-check-label" for="changed_name_no">No</label>
+                                                </div>
+                                                <input type="text" class="form-control mt-2" name="previous_name"
+                                                    minlength="1" maxlength="45"
+                                                    placeholder="Provide previous name if yes">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 3 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Gender:</label>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" class="form-check-input" name="gender"
+                                                        id="gender_male" value="male">
+                                                    <label class="form-check-label" for="gender_male">Male</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" class="form-check-input" name="gender"
+                                                        id="gender_female" value="female">
+                                                    <label class="form-check-label" for="gender_female">Female</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" class="form-check-input" name="gender"
+                                                        id="gender_transgender" value="transgender">
+                                                    <label class="form-check-label"
+                                                        for="gender_transgender">Transgender</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Date of Birth:</label>
+                                                <input type="date" class="form-control" name="dob" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 4 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Place of Birth (Village or Town or
+                                                    City):</label>
+                                                <input type="text" class="form-control" name="place_of_birth" required
+                                                    minlength="1" maxlength="25">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">District (If born in India):</label>
+                                                <input type="text" class="form-control" name="district" required
+                                                    minlength="1" maxlength="25">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 5 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">State/UT (If born in India):</label>
+                                                <input type="text" class="form-control" name="state" required
+                                                    minlength="1" maxlength="25">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Region/Country (If born abroad):</label>
+                                                <input type="text" class="form-control" name="region_country" required
+                                                    minlength="1" maxlength="25">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 6 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Citizenship of India by:</label>
+                                                <select name="citizenship" class="form-control" required>
+                                                    <option value="birth">Birth</option>
+                                                    <option value="descent">Descent</option>
+                                                    <option value="registration_naturalization">
+                                                        Registration/Naturalization</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">PAN (If available):</label>
+                                                <input type="text" class="form-control" name="pan" minlength="10"
+                                                    maxlength="10">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 7 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Employment Type:</label>
+                                                <select name="employment_type" class="form-control" required>
+                                                    <option value="psu">PSU</option>
+                                                    <option value="government">Government</option>
+                                                    <option value="statutory_body">Statutory Body</option>
+                                                    <option value="retired_government_servant">Retired Government
+                                                        Servant</option>
+                                                    <option value="self_employed">Self Employed</option>
+                                                    <option value="private">Private</option>
+                                                    <option value="homemaker">Homemaker</option>
+                                                    <option value="not_employed">Not Employed</option>
+                                                    <option value="retired_private_service">Retired-Private Service
+                                                    </option>
+                                                    <option value="student">Student</option>
+                                                    <option value="others">Others</option>
+                                                    <option value="x">Owners, Partners & Directors of companies which
+                                                        are members of CII, FICCI & ASSOCHAM</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">If employed in Government/Statutory Body/PSU,
+                                                    specify organization name:</label>
+                                                <input type="text" class="form-control" name="organization_name"
+                                                    minlength="1" maxlength="30">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 8 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Educational Qualification:</label>
+                                                <select name="education" class="form-control" required>
+                                                    <option value="7th_pass_or_less">7th pass or less</option>
+                                                    <option value="between_8th_and_9th_standard">Between 8th and 9th
+                                                        Standard</option>
+                                                    <option value="10th_pass_and_above">10th pass and above</option>
+                                                    <option value="graduate_and_above">Graduate and above</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Visible Distinguishing Mark:</label>
+                                                <input type="text" class="form-control" name="distinguishing_mark"
+                                                    required minlength="1" maxlength="30">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 9 -->
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="father_given_name">
+                                                    Father's Fullname :
+                                                </label>
+                                                <input type="text" class="form-control" id="father_given_name"
+                                                    name="father_given_name" required min="1" max="45" size="200">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="mother_given_name">
+                                                    Mother's Fullname :
+                                                </label>
+                                                <input type="text" class="form-control" id="mother_given_name"
+                                                    name="mother_given_name" required min="1" max="45" size="200">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="guardian_given_name">
+                                                    Legal Guardian's Given Name (if applicable):
+                                                </label>
+                                                <input type="text" class="form-control" id="guardian_given_name"
+                                                    name="guardian_given_name" min="1" max="45" size="200">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="spouse_given_name">
+                                                    Spouse's Fullname (if applicable):
+                                                </label>
+                                                <input type="text" class="form-control" id="spouse_given_name"
+                                                    name="spouse_given_name" min="1" max="45" size="200">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-6 ">
+                                            <div class="mb-3">
+                                                <label class="form-label">Are you eligible for Non-ECR category?</label>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" class="form-check-input" name="non_ecr"
+                                                        id="non_ecr_yes" value="yes">
+                                                    <label class="form-check-label" for="non_ecr">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" class="form-check-input" name="non_ecr"
+                                                        id="non_ecr_no" value="no">
+                                                    <label class="form-check-label" for="non_ecr">No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label> Do you have a passport:</label>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" name="passport_exist" value="yes"
+                                                        class="form-check-input">
+                                                    <label class="form-check-label">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" name="passport_exist" value="no"
+                                                        class="form-check-input">
+                                                    <label class="form-check-label">No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Passport Number:</label>
+                                                    <input type="text" class="form-control" name="passport_number"
+                                                        size="200">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Date of Issue:</label>
+                                                    <input type="date" class="form-control" name="passport_issue_date">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Place of Issue:</label>
+                                                    <input type="text" class="form-control" name="passport_issue_place">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>File Number:</label>
+                                                    <input type="text" class="form-control" name="file_number">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label> Are you a holder of any other passport/identity
+                                                        certificate?</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <input type="radio" name="other_passport_exist" value="yes"
+                                                            class="form-check-input">
+                                                        <label class="form-check-label">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input type="radio" name="other_passport_exist" value="no"
+                                                            class="form-check-input">
+                                                        <label class="form-check-label">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <em>If yes, provide details:</em>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Passport Number:</label>
+                                                    <input type="text" class="form-control"
+                                                        name="other_passport_number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Date of Issue:</label>
+                                                    <input type="date" class="form-control"
+                                                        name="other_passport_issue_date">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Place of Issue:</label>
+                                                    <input type="text" class="form-control"
+                                                        name="other_passport_issue_place">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>File Number:</label>
+                                                    <input type="text" class="form-control" name="other_file_number">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="form-buttons text-center mt-1">
+                                            <button type="button" class="btn btn-secondary me-2" id="previousBtn">Previous</button>
+                                            <button type="submit" class="btn btn-success me-2" id="saveBtn">Save</button>
+                                            <button type="button" class="btn btn-secondary me-2" id="nextBtn">Next</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                            <div class="tab-pane fade" id="residential" role="tabpanel"
+                                aria-labelledby="residential-tab">
+                                <!-- Residential Details Tab Content -->
+                                <form>
+                                    <b> Present Residential Address:</b>
+                                    <div class="row g-3">
+                                        <!-- Row 1 -->
+                                        <div class="col-md-6 ">
+                                            <div class="mb-1 mt-2">
+                                                <label class="form-label">House No. and Street Name:</label>
+                                                <input type="text" class="form-control" name="house_no_street">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1 mt-2">
+                                                <label class="form-label">Address Lane 1:</label>
+                                                <input type="text" class="form-control" name="address_lane1">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 2 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">Address Lane 2:</label>
+                                                <input type="text" class="form-control" name="address_lane2">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">Village/Town/City:</label>
+                                                <input type="text" class="form-control" name="village_town_city">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 3 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">District:</label>
+                                                <select name="present_district" class="form-control" required>
+                                                    <option value="">Select District</option>
+                                                    <option value="Mumbai">Mumbai</option>
+                                                    <option value="Pune">Pune</option>
+                                                    <option value="Nagpur">Nagpur</option>
+                                                    <option value="Thane">Thane</option>
+                                                    <option value="Nashik">Nashik</option>
+                                                    <option value="Kolhapur">Kolhapur</option>
+                                                    <option value="Aurangabad">Aurangabad</option>
+                                                    <option value="Solapur">Solapur</option>
+                                                    <option value="Amravati">Amravati</option>
+                                                    <option value="Jalgaon">Jalgaon</option>
+                                                    <option value="Ahmednagar">Ahmednagar</option>
+                                                    <option value="Satara">Satara</option>
+                                                    <option value="Sangli">Sangli</option>
+                                                    <option value="Akola">Akola</option>
+                                                    <option value="Latur">Latur</option>
+                                                    <option value="Dhule">Dhule</option>
+                                                    <option value="Raigad">Raigad</option>
+                                                    <option value="Chandrapur">Chandrapur</option>
+                                                    <option value="Jalna">Jalna</option>
+                                                    <option value="Parbhani">Parbhani</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">State/UT:</label>
+                                                <select name="present_state" class="form-control" required>
+                                                    <option value="">Select State/UT</option>
+                                                    <option value="Maharashtra">Maharashtra</option>
+                                                    <option value="Karnataka">Karnataka</option>
+                                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                    <option value="Gujarat">Gujarat</option>
+                                                    <option value="Rajasthan">Rajasthan</option>
+                                                    <option value="West Bengal">West Bengal</option>
+                                                    <option value="Punjab">Punjab</option>
+                                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                    <option value="Bihar">Bihar</option>
+                                                    <option value="Odisha">Odisha</option>
+                                                    <option value="Kerala">Kerala</option>
+                                                    <option value="Telangana">Telangana</option>
+                                                    <option value="Assam">Assam</option>
+                                                    <option value="Jharkhand">Jharkhand</option>
+                                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                                    <option value="Haryana">Haryana</option>
+                                                    <option value="Uttarakhand">Uttarakhand</option>
+                                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                    <option value="Goa">Goa</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 4 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">PIN:</label>
+                                                <input type="text" class="form-control" name="present_pin">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">Country:</label>
+                                                <select name="country" class="form-control" required>
+                                                    <option value="">Select Country</option>
+                                                    <option value="India">India</option>
+                                                    <option value="USA">USA</option>
+                                                    <option value="Canada">Canada</option>
+                                                    <option value="Australia">Australia</option>
+                                                    <option value="United Kingdom">United Kingdom</option>
+                                                    <option value="Germany">Germany</option>
+                                                    <option value="France">France</option>
+                                                    <option value="Japan">Japan</option>
+                                                    <option value="China">China</option>
+                                                    <option value="Brazil">Brazil</option>
+                                                    <option value="Russia">Russia</option>
+                                                    <option value="South Africa">South Africa</option>
+                                                    <option value="Mexico">Mexico</option>
+                                                    <option value="Argentina">Argentina</option>
+                                                    <option value="Saudi Arabia">Saudi Arabia</option>
+                                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                                    <option value="Singapore">Singapore</option>
+                                                    <option value="Malaysia">Malaysia</option>
+                                                    <option value="New Zealand">New Zealand</option>
+                                                    <option value="South Korea">South Korea</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 5 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">Mobile No.:</label>
+                                                <input type="tel" class="form-control" name="mobile_no">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">Telephone No:</label>
+                                                <input type="tel" class="form-control" name="telephone_no"
+                                                    minlength="10" maxlength="10">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="col-md-12">
+                                            <div class="form-check px-1">
+                                                <label>
+                                                    <b>Is your Permanent Address same as Present Address?</b>
+                                                </label>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" name="same_as_present" value="yes"
+                                                        class="form-check-input">
+                                                    <label class="form-check-label">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" name="same_as_present" value="no"
+                                                        class="form-check-input">
+                                                    <label class="form-check-label">No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <div class="mb-1 mt-2">
+                                                <label class="form-label">House No. and Street Name:</label>
+                                                <input type="text" class="form-control" name="house_no_street">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1 mt-2">
+                                                <label class="form-label">Address Lane 1:</label>
+                                                <input type="text" class="form-control" name="address_lane1">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 2 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">Address Lane 2:</label>
+                                                <input type="text" class="form-control" name="address_lane2">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">Village/Town/City:</label>
+                                                <input type="text" class="form-control" name="village_town_city">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 3 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">District:</label>
+                                                <select name="present_district" class="form-control" required>
+                                                    <option value="">Select District</option>
+                                                    <option value="Mumbai">Mumbai</option>
+                                                    <option value="Pune">Pune</option>
+                                                    <option value="Nagpur">Nagpur</option>
+                                                    <option value="Thane">Thane</option>
+                                                    <option value="Nashik">Nashik</option>
+                                                    <option value="Kolhapur">Kolhapur</option>
+                                                    <option value="Aurangabad">Aurangabad</option>
+                                                    <option value="Solapur">Solapur</option>
+                                                    <option value="Amravati">Amravati</option>
+                                                    <option value="Jalgaon">Jalgaon</option>
+                                                    <option value="Ahmednagar">Ahmednagar</option>
+                                                    <option value="Satara">Satara</option>
+                                                    <option value="Sangli">Sangli</option>
+                                                    <option value="Akola">Akola</option>
+                                                    <option value="Latur">Latur</option>
+                                                    <option value="Dhule">Dhule</option>
+                                                    <option value="Raigad">Raigad</option>
+                                                    <option value="Chandrapur">Chandrapur</option>
+                                                    <option value="Jalna">Jalna</option>
+                                                    <option value="Parbhani">Parbhani</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">State/UT:</label>
+                                                <select name="present_state" class="form-control" required>
+                                                    <option value="">Select State/UT</option>
+                                                    <option value="Maharashtra">Maharashtra</option>
+                                                    <option value="Karnataka">Karnataka</option>
+                                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                    <option value="Gujarat">Gujarat</option>
+                                                    <option value="Rajasthan">Rajasthan</option>
+                                                    <option value="West Bengal">West Bengal</option>
+                                                    <option value="Punjab">Punjab</option>
+                                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                    <option value="Bihar">Bihar</option>
+                                                    <option value="Odisha">Odisha</option>
+                                                    <option value="Kerala">Kerala</option>
+                                                    <option value="Telangana">Telangana</option>
+                                                    <option value="Assam">Assam</option>
+                                                    <option value="Jharkhand">Jharkhand</option>
+                                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                                    <option value="Haryana">Haryana</option>
+                                                    <option value="Uttarakhand">Uttarakhand</option>
+                                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                    <option value="Goa">Goa</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 4 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">PIN:</label>
+                                                <input type="text" class="form-control" name="present_pin">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">Country:</label>
+                                                <select name="country" class="form-control" required>
+                                                    <option value="">Select Country</option>
+                                                    <option value="India">India</option>
+                                                    <option value="USA">USA</option>
+                                                    <option value="Canada">Canada</option>
+                                                    <option value="Australia">Australia</option>
+                                                    <option value="United Kingdom">United Kingdom</option>
+                                                    <option value="Germany">Germany</option>
+                                                    <option value="France">France</option>
+                                                    <option value="Japan">Japan</option>
+                                                    <option value="China">China</option>
+                                                    <option value="Brazil">Brazil</option>
+                                                    <option value="Russia">Russia</option>
+                                                    <option value="South Africa">South Africa</option>
+                                                    <option value="Mexico">Mexico</option>
+                                                    <option value="Argentina">Argentina</option>
+                                                    <option value="Saudi Arabia">Saudi Arabia</option>
+                                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                                    <option value="Singapore">Singapore</option>
+                                                    <option value="Malaysia">Malaysia</option>
+                                                    <option value="New Zealand">New Zealand</option>
+                                                    <option value="South Korea">South Korea</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 5 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">Mobile No.:</label>
+                                                <input type="tel" class="form-control" name="mobile_no">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">Telephone No:</label>
+                                                <input type="tel" class="form-control" name="telephone_no"
+                                                    minlength="10" maxlength="10">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="form-buttons text-center mt-1">
+                                            <button type="button" class="btn btn-secondary me-2" id="previousBtn">Previous</button>
+                                            <button type="submit" class="btn btn-success me-2" id="saveBtn">Save</button>
+                                            <button type="button" class="btn btn-secondary me-2" id="nextBtn">Next</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <div class="tab-pane fade" id="emergency" role="tabpanel" aria-labelledby="emergency-tab">
+                                <!-- Emergency Contact Tab Content -->
+                                <form>
+                                    <div class="row g-3">
+                                        <!-- Row 1 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1 mt-2">
+                                                <label class="form-label">Contact Name:</label>
+                                                <input type="text" class="form-control" name="emergency_name" required
+                                                    minlength="1" maxlength="50" size="200">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1 mt-2">
+                                                <label class="form-label">Contact Address:</label>
+                                                <input type="text" class="form-control" name="emergency_address"
+                                                    required minlength="1" maxlength="50" size="200">
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 2 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1 ">
+                                                <label class="form-label">Mobile/Telephone No.:</label>
+                                                <input type="tel" class="form-control" name="emergency_contact_no"
+                                                    required minlength="10" maxlength="10" size="200">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1 ">
+                                                <label class="form-label">E-mail ID:</label>
+                                                <input type="email" class="form-control" name="emergency_contact_email"
+                                                    size="200" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 3 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1 ">
+                                                <label class="form-label">City:</label>
+                                                <input type="text" class="form-control" name="emergency_city">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1">
+                                                <label class="form-label">District:</label>
+                                                <select name="present_district" class="form-control" required>
+                                                    <option value="">Select District</option>
+                                                    <option value="Mumbai">Mumbai</option>
+                                                    <option value="Pune">Pune</option>
+                                                    <option value="Nagpur">Nagpur</option>
+                                                    <option value="Thane">Thane</option>
+                                                    <option value="Nashik">Nashik</option>
+                                                    <option value="Kolhapur">Kolhapur</option>
+                                                    <option value="Aurangabad">Aurangabad</option>
+                                                    <option value="Solapur">Solapur</option>
+                                                    <option value="Amravati">Amravati</option>
+                                                    <option value="Jalgaon">Jalgaon</option>
+                                                    <option value="Ahmednagar">Ahmednagar</option>
+                                                    <option value="Satara">Satara</option>
+                                                    <option value="Sangli">Sangli</option>
+                                                    <option value="Akola">Akola</option>
+                                                    <option value="Latur">Latur</option>
+                                                    <option value="Dhule">Dhule</option>
+                                                    <option value="Raigad">Raigad</option>
+                                                    <option value="Chandrapur">Chandrapur</option>
+                                                    <option value="Jalna">Jalna</option>
+                                                    <option value="Parbhani">Parbhani</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Row 4 -->
+                                        <div class="col-md-6">
+                                            <div class="mb-1 ">
+                                                <label class="form-label">PIN Code:</label>
+                                                <input type="text" class="form-control" name="emergency_pincode">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-1 ">
+                                                <label class="form-label">State:</label>
+                                                <select name="present_state" class="form-control" required>
+                                                    <option value="">Select State/UT</option>
+                                                    <option value="Maharashtra">Maharashtra</option>
+                                                    <option value="Karnataka">Karnataka</option>
+                                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                    <option value="Gujarat">Gujarat</option>
+                                                    <option value="Rajasthan">Rajasthan</option>
+                                                    <option value="West Bengal">West Bengal</option>
+                                                    <option value="Punjab">Punjab</option>
+                                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                    <option value="Bihar">Bihar</option>
+                                                    <option value="Odisha">Odisha</option>
+                                                    <option value="Kerala">Kerala</option>
+                                                    <option value="Telangana">Telangana</option>
+                                                    <option value="Assam">Assam</option>
+                                                    <option value="Jharkhand">Jharkhand</option>
+                                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                                    <option value="Haryana">Haryana</option>
+                                                    <option value="Uttarakhand">Uttarakhand</option>
+                                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                    <option value="Goa">Goa</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="form-buttons text-center mt-1">
+                                            <button type="button" class="btn btn-secondary me-2" id="previousBtn">Previous</button>
+                                            <button type="submit" class="btn btn-success me-2" id="saveBtn">Save</button>
+                                            <button type="button" class="btn btn-secondary me-2" id="nextBtn">Next</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+                                <!-- Other Tab Content -->
+                                <form>
+                                    <div class="form-group">
+                                        <div class="form-check px-0 py-1">
+                                            <label class="form-check-label">
+                                                Have you ever held/hold any diplomatic/official passport?
+                                            </label>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="diplomatic_passport_exist" value="yes"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="diplomatic_passport_exist" value="no"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check px-0 py-1">
+                                            <label class="form-check-label">
+                                                Have you ever applied for passport, but not issued?
+                                            </label>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="passport_applied_not_issued" value="yes"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="passport_applied_not_issued" value="no"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check px-0 py-1">
+                                            <label class="form-check-label">
+                                                Has your passport ever been impounded/revoked?
+                                            </label>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="passport_impounded_revoked" value="yes"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="passport_impounded_revoked" value="no"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check px-0 py-1">
+                                            <label class="form-check-label">
+                                                Have you ever been refused passport?
+                                            </label>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="passport_refused" value="yes"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="passport_refused" value="no"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check px-0 py-1">
+                                            <label class="form-check-label">
+                                                Have you ever been granted short validity passport?
+                                            </label>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="short_validity_passport" value="yes"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="short_validity_passport" value="no"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check px-0 py-1">
+                                            <label class="form-check-label">
+                                                Have you ever been granted passport for different name?
+                                            </label>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="different_name_passport" value="yes"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="different_name_passport" value="no"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="px-1">
+                                                    If yes, specify name:
+                                                    <input type="text" class="form-control" name="different_name"
+                                                        min="1" max="50" size="200">
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check px-0 py-1">
+                                            <label class="form-check-label">
+                                                Are any criminal proceedings pending against you before a court in
+                                                India?
+                                            </label>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="pending_criminal_proceedings" value="yes"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="pending_criminal_proceedings" value="no"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check px-0 py-1">
+                                            <label class="form-check-label">
+                                                Have you at any time during the period of 5 years immediately preceding
+                                                the date of this application been convicted by a court in India for any
+                                                criminal offence and sentenced to imprisonment for two years or more?
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" name="convicted_imprisonment" value="yes"
+                                                        class="form-check-input">
+                                                    <label class="form-check-label">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" name="convicted_imprisonment" value="no"
+                                                        class="form-check-input">
+                                                    <label class="form-check-label">No</label>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check px-0 py-1">
+                                            <label class="form-check-label">
+                                                Have you ever been refused or denied passport?
+                                            </label>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="passport_denied" value="yes"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="passport_denied" value="no"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check px-0 py-1">
+                                            <label class="form-check-label">
+                                                Has your passport ever been impounded by the government?
+                                            </label>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="passport_impounded_government" value="yes"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="passport_impounded_government" value="no"
+                                                    class="form-check-input">
+                                                <label class="form-check-label">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="form-buttons text-center mt-1">
+                                            <button type="button" class="btn btn-secondary me-2" id="previousBtn">Previous</button>
+                                            <button type="submit" class="btn btn-success me-2" id="saveBtn">Save</button>
+                                            <button type="button" class="btn btn-secondary me-2" id="nextBtn">Next</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                            <div class="tab-pane fade" id="declaration" role="tabpanel"
+                                aria-labelledby="declaration-tab">
+                                <!-- Self Declaration Tab Content -->
+                                <form>
+                                    <div class="form-check py-1">
+                                        <p>I owe allegiance to the sovereignty, unity & integrity of India, and have not
+                                            voluntarily acquired citizenship or travel document of any other country. I
+                                            have not lost, surrendered or been deprived of the citizenship of India. I
+                                            have not contravened any of the conditions relating to the possession and
+                                            use of an Indian passport.
+                                        </p>
+
+                                        <p>
+                                            I affirm that the information and particulars given by me in this form are
+                                            true and correct. I further state that I am not suppressing any material
+                                            information in this regard. I further affirm that the enclosures and
+                                            documentary proof submitted in support of my application for an Indian
+                                            passport are authentic and solely pertain to me and I am fully responsible
+                                            for the accuracy of the same. I am liable to be penalized or prosecuted if
+                                            found otherwise. I am aware that under the Passports Act, 1967 it is a
+                                            criminal offence to furnish any false information or to suppress any
+                                            material information with a view to obtaining passport or travel document.
+                                        </p>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="termsCheckbox" required>
+                                            <label class="form-check-label" for="termsCheckbox">
+                                                <b>I have read and understood the contents of the above and by
+                                                    submitting this form certify that all the information submitted byme
+                                                    in the form is bonafide.</b>
+                                            </label>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="form-group">Place:</label>
+                                                <input type="text" class="form-control" name="declaration_place"
+                                                    required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-group">Date:</label>
+                                                <input type="date" class="form-control" name="declaration_date"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="form-group">
+                                                Upload Signature/ Left Hand Thumb Impression of Applicant (If applicant
+                                                is minor, either parent to sign):
+                                            </label>
+                                            <input type="file" class="form-control" name="applicant_signature" required>
+                                        </div>
+                                        <div class="row">
+                                            <label class="form-group">
+                                                Signature/ Left Hand Thumb Impression of Illiterate Applicant and Minors
+                                                who cannot sign:
+                                            </label>
+                                            <input type="file" class="form-control" name="left_hand_thumb_imp" required>
+                                        </div>
+                                        <div class="row">
+                                            <label class="form-group">
+                                                Please upload your unsigned recent colour photograph with white
+                                                background of size 4.5cm X 3.5cm:
+                                            </label>
+                                            <input type="file" class="form-control" name="applicant_photo" required>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group px-0 py-1">
+                                                <label>
+                                                    <b>Amount to be Paid: </b>
+                                                    <input type="text" class="form-control" name="amount_paid"
+                                                        value="Rs. 2500" size="200" readonly>
+                                                </label>
+                                            </div>
+                                            <div class="form-buttons text-center mt-1">
+                                                <button type="button" class="btn btn-secondary me-2" id="previousBtn">Previous</button>
+                                                <button type="submit" class="btn btn-success me-2" id="submitBtn">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-footer">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarFooter" aria-controls="navbarFooter" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarFooter">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms & Conditions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <p>&copy; 2024 Passport Seva. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+    <!-- SweetAlert2 library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Your Custom Scripts -->
+    <script src="./assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Function to show the next tab
+            function showNextTab() {
+                let activeTab = document.querySelector('.nav-tabs .nav-link.active');
+                if (activeTab) {
+                    let nextTab = activeTab.parentElement.nextElementSibling;
+                    if (nextTab) {
+                        nextTab.querySelector('.nav-link').click();
+                    }
+                }
+            }
+
+            // Function to show the previous tab
+            function showPreviousTab() {
+                let activeTab = document.querySelector('.nav-tabs .nav-link.active');
+                if (activeTab) {
+                    let previousTab = activeTab.parentElement.previousElementSibling;
+                    if (previousTab) {
+                        previousTab.querySelector('.nav-link').click();
+                    }
+                }
+            }
+
+            // Attach event listeners to the Next and Previous buttons
+            document.querySelectorAll('#nextBtn').forEach(button => {
+                button.addEventListener('click', showNextTab);
+            });
+
+            document.querySelectorAll('#previousBtn').forEach(button => {
+                button.addEventListener('click', showPreviousTab);
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>

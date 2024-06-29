@@ -1,0 +1,173 @@
+/* General Body Styles */
+body {
+    background-color: #EFEBDF; /* Nice background color for the page */
+}
+
+/* Header Styles */
+header {
+    background-color: #343a40; /* Background color of the header */
+    color: white; /* Text color */
+    padding: 10px 0; /* Vertical padding */
+}
+
+.header-content {
+    text-align: center;
+    margin-top: 30px; /* Adjust top margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content img {
+    width: 100px; /* Adjust image size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    margin-right: 20px; /* Space between image and text */
+}
+
+/* Navbar Styles */
+.navbar-header {
+    background-color: #212529; /* Background color of the header navbar */
+    border-radius: 10px; /* Rounded corners for the navbar */
+}
+
+.navbar-footer {
+    background-color: #212529; /* Background color of the footer navbar */
+    border: none; /* Remove border */
+}
+
+.navbar-header .navbar-nav {
+    margin-left: auto; /* Align navbar content to the right */
+}
+
+.navbar-footer .navbar-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Divide footer navbar into 3 equal sections */
+    gap: 0; /* Remove gap between items */
+}
+
+/* Image Container Styles */
+.image-container img {
+    width: 100%; /* Full width within the container */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease; /* Smooth transition on hover */
+    border-radius: 10px; /* Rounded corners for images */
+}
+
+.image-container:hover img {
+    transform: scale(1.03); /* Scale up image on hover */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #343a40; /* Background color of the footer */
+    color: white; /* Text color */
+    padding: 20px 0; /* Vertical padding */
+}
+
+/* Footer Navbar Styles */
+.navbar-footer .navbar-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Divide footer navbar into 3 equal sections */
+    gap: 0; /* Remove gap between items */
+    justify-content: center; /* Center align items */
+}
+
+/* Custom Sidebar Styles */
+.sidebar {
+    border-radius: 30px;
+    background-color: #343a40;
+    padding: 15px;
+    color: white;
+    height: 80vh;
+    border: 2px solid #ffc107; /* Yellow border color */
+    overflow-y: auto; /* Enable scrolling for sidebar */
+}
+
+.sidebar .fs-4 {
+    font-size: 1.5rem; /* Adjust font size as needed */
+    margin-bottom: 10px;
+}
+
+.sidebar hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s;
+}
+
+.sidebar .nav-link:hover {
+    color: white;
+}
+
+.sidebar .nav-link.active {
+    color: white;
+    font-weight: bold;
+}
+
+.sidebar .nav-pills .nav-link i {
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column; /* Stack header content vertically on small screens */
+        text-align: center;
+    }
+
+    .header-content img {
+        margin-bottom: 10px; /* Adjust margin for image on small screens */
+    }
+
+    .sidebar {
+        height: auto; /* Adjust height for smaller screens */
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+#statustracker, #paymentDetails {
+    background-color: burlywood; /* Light background color */
+    border-radius: 60px; /* Rounded border with large radius */
+    padding: 20px; /* Padding inside the div */
+    
+}
+
+#statustracker input.form-control {
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#statustracker input.form-control:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Hover effect with subtle shadow */
+}
+
+/* Navbar Styles */
+.navbar-header .navbar-nav .nav-link.active,
+.navbar-header .navbar-nav .nav-link:hover {
+    color: #ffc107; /* Active and hover color */
+}
+/* Custom CSS for gutter between carousel and content */
+@media (min-width: 992px) {
+    .content {
+        margin-left: 15px; /* Adjust as needed */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .carousel,
+    .content {
+        margin-bottom: 15px; /* Adjust as needed */
+    }
+}
+
+input[type="date"]:hover {
+    cursor: pointer; /* Optional: Change cursor on hover */
+}
+.form-control:hover {
+    cursor: pointer; /* Optional: Change cursor on hover */
+}
