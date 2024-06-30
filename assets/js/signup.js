@@ -30,3 +30,66 @@
             });
         });
 })();
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('#signupForm');
+    
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      
+      const firstName = document.getElementById('firstname').value;
+      const middleName = document.getElementById('middlename').value;
+      const lastName = document.getElementById('lastname').value;
+      const dob = document.getElementById('dob').value;
+      const email = document.getElementById('email').value;
+      const gender = document.getElementById('gender').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmpassword').value;
+  
+      const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  
+      // Check if passwords match
+      if (password !== confirmPassword) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Passwords do not match'
+        });
+        return;
+      }
+  
+      // Check if password meets criteria
+      if (!passwordPattern.test(password)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Password must contain at least 1 small letter, 1 capital letter, 1 special character, and must be at least 8 characters long'
+        });
+        return;
+      }
+  
+      const userData = {
+        firstName: firstName,
+        middleName: middleName,
+        lastName: lastName,
+        dob: dob,
+        email: email,
+        gender: gender,
+        username: username,
+        password: password
+      };
+  
+      // Save user data in local storage
+      localStorage.setItem('userData', JSON.stringify(userData));
+  
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Registration successful!'
+      }).then(() => {
+        // Redirect to login page
+        window.location.href = 'index.html';
+      });
+    });
+  });
+  

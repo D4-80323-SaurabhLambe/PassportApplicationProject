@@ -16,6 +16,7 @@
 
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -142,66 +143,71 @@
                             <div class="tab-pane fade show active" id="service" role="tabpanel"
                                 aria-labelledby="service-tab">
                                 <!-- Service Tab Content -->
-                                <form>
+                                <form id="passportServiceForm" class="needs-validation" novalidate>
                                     <div class="row m-2">
-                                        <label class="mb-1">1.1 Service Required</label>
+                                        <label class="mb-1">1.1 Service Required:</label>
                                         <div class="col-auto">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="application_type"
-                                                    id="normalRadio" value="normal" required>
+                                                <input class="form-check-input" type="radio" name="application_type" id="normalRadio" value="normal" required>
                                                 <label class="form-check-label" for="normalRadio">Normal</label>
+                                                
                                             </div>
                                         </div>
                                         <div class="col-auto">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="application_type"
-                                                    id="tatkaalRadio" value="tatkaal" required>
+                                                <input class="form-check-input" type="radio" name="application_type" id="tatkaalRadio" value="tatkaal" required>
                                                 <label class="form-check-label" for="tatkaalRadio">Tatkaal</label>
                                             </div>
                                         </div>
                                     </div>
-
+                                
                                     <!-- Select dropdowns -->
                                     <div class="form-group m-2">
-                                        <label>1.2 Type of Passport Booklet:</label>
-                                        <select name="passport_booklet_type" class="form-control" required>
+                                        <label for="passportBookletType">1.2 Type of Passport Booklet:</label>
+                                        <select id="passportBookletType" name="passport_booklet_type" class="form-control" required>
+                                            <option value="">Select Type</option>
                                             <option value="36_pages">36 Pages</option>
                                             <option value="60_pages">60 Pages</option>
                                         </select>
+                                        <div class="invalid-feedback">Please select a passport booklet type.</div>
                                     </div>
-
+                                
                                     <div class="form-group m-2">
-                                        <label>1.3 Validity Required:</label>
-                                        <select name="validity_required" class="form-control" required>
+                                        <label for="validityRequired">1.3 Validity Required:</label>
+                                        <select id="validityRequired" name="validity_required" class="form-control" required>
+                                            <option value="">Select Validity</option>
                                             <option value="10_years">10 Years</option>
-                                            <option value="up_to_age_18">Up to age 18 (For minors between 15 and 18
-                                                years)</option>
+                                            <option value="up_to_age_18">Up to age 18 (For minors between 15 and 18 years)</option>
                                         </select>
+                                        <div class="invalid-feedback">Please select a validity option.</div>
                                     </div>
+                                
                                     <div class="row mb-3 mt-3">
                                         <div class="form-buttons text-center mt-1">
-                                            <button type="submit" class="btn btn-success me-2"
-                                                id="saveBtn">Save</button>
-                                            <button type="button" class="btn btn-secondary me-2"
-                                                id="nextBtn">Next</button>
+                                            <button type="submit" class="btn btn-success me-2" id="saveBtnService">Save</button>
+                                            <button type="button" class="btn btn-secondary me-2" id="nextBtn">Next</button>
                                         </div>
                                     </div>
                                 </form>
+                                
                             </div>
+                            
                             <div class="tab-pane fade" id="applicant" role="tabpanel" aria-labelledby="applicant-tab">
-                                <form>
+                                <form id="passportApplicantForm" class="needs-validation" novalidate >
                                     <div class="row g-3">
                                         <!-- Row 1 -->
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">First Name:</label>
-                                                <input type="text" class="form-control" name="given_name" required>
+                                                <label class="form-label">First Name*:</label>
+                                                <input type="text" class="form-control" name="given_name" required placeholder="Enter First Name">
+                                                <div class="invalid-feedback">Please enter your first name.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Surname:</label>
-                                                <input type="text" class="form-control" name="surname" required>
+                                                <label class="form-label">Surname*:</label>
+                                                <input type="text" class="form-control" name="surname" required placeholder="Enter Surname">
+                                                <div class="invalid-feedback">Please enter your surname.</div>
                                             </div>
                                         </div>
 
@@ -246,7 +252,7 @@
                                         <!-- Row 3 -->
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Gender:</label>
+                                                <label class="form-label">Gender*:</label>
                                                 <div class="form-check form-check-inline">
                                                     <input type="radio" class="form-check-input" name="gender"
                                                         id="gender_male" value="male">
@@ -267,74 +273,157 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Date of Birth:</label>
-                                                <input type="date" class="form-control" name="dob" required>
+                                                <label class="form-label">Date of Birth*:</label>
+                                                <input type="date" class="form-control" name="dob" required placeholder="Please eneter dob here">
+                                                <div class="invalid-feedback">Please enter your date of birth.</div>
                                             </div>
                                         </div>
 
                                         <!-- Row 4 -->
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Place of Birth (Village or Town or
-                                                    City):</label>
+                                                <label class="form-label">Place of Birth *:</label>
                                                 <input type="text" class="form-control" name="place_of_birth" required
-                                                    minlength="1" maxlength="25">
+                                                    minlength="1" maxlength="25" placeholder="Please enter place here">
+                                                    <div class="invalid-feedback">Please enter your place of birth.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">District (If born in India):</label>
-                                                <input type="text" class="form-control" name="district" required
-                                                    minlength="1" maxlength="25">
+                                                <label class="form-label">District:</label>
+                                                <select class="form-select" name="district" required>
+                                                    <option value="">Select District</option>
+                                                    <option value="Ahmednagar">Ahmednagar</option>
+                                                    <option value="Akola">Akola</option>
+                                                    <option value="Amravati">Amravati</option>
+                                                    <option value="Aurangabad">Aurangabad</option>
+                                                    <option value="Beed">Beed</option>
+                                                    <option value="Bhandara">Bhandara</option>
+                                                    <option value="Buldhana">Buldhana</option>
+                                                    <option value="Chandrapur">Chandrapur</option>
+                                                    <option value="Dhule">Dhule</option>
+                                                    <option value="Gadchiroli">Gadchiroli</option>
+                                                    <option value="Gondia">Gondia</option>
+                                                    <option value="Hingoli">Hingoli</option>
+                                                    <option value="Jalgaon">Jalgaon</option>
+                                                    <option value="Jalna">Jalna</option>
+                                                    <option value="Kolhapur">Kolhapur</option>
+                                                    <option value="Latur">Latur</option>
+                                                    <option value="Mumbai City">Mumbai City</option>
+                                                    <option value="Mumbai Suburban">Mumbai Suburban</option>
+                                                    <option value="Nagpur">Nagpur</option>
+                                                    <option value="Nanded">Nanded</option>
+                                                    <option value="Nandurbar">Nandurbar</option>
+                                                    <option value="Nashik">Nashik</option>
+                                                    <option value="Osmanabad">Osmanabad</option>
+                                                    <option value="Palghar">Palghar</option>
+                                                    <option value="Parbhani">Parbhani</option>
+                                                    <option value="Pune">Pune</option>
+                                                    <option value="Raigad">Raigad</option>
+                                                    <option value="Ratnagiri">Ratnagiri</option>
+                                                    <option value="Sangli">Sangli</option>
+                                                    <option value="Satara">Satara</option>
+                                                    <option value="Sindhudurg">Sindhudurg</option>
+                                                    <option value="Solapur">Solapur</option>
+                                                    <option value="Thane">Thane</option>
+                                                    <option value="Wardha">Wardha</option>
+                                                    <option value="Washim">Washim</option>
+                                                    <option value="Yavatmal">Yavatmal</option>
+                                                </select>
+                                                <div class="invalid-feedback">Please select your district.</div>
                                             </div>
                                         </div>
+                                        
 
                                         <!-- Row 5 -->
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">State/UT (If born in India):</label>
-                                                <input type="text" class="form-control" name="state" required
-                                                    minlength="1" maxlength="25">
+                                                <label class="form-label">State/UT*:</label>
+                                                <select class="form-select" name="state" required>
+                                                    <option value="">Select State/UT</option>
+                                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                    <option value="Assam">Assam</option>
+                                                    <option value="Bihar">Bihar</option>
+                                                    <option value="Chandigarh">Chandigarh</option>
+                                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                                    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                                    <option value="Delhi">Delhi</option>
+                                                    <option value="Goa">Goa</option>
+                                                    <option value="Gujarat">Gujarat</option>
+                                                    <option value="Haryana">Haryana</option>
+                                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                    <option value="Jharkhand">Jharkhand</option>
+                                                    <option value="Karnataka">Karnataka</option>
+                                                    <option value="Kerala">Kerala</option>
+                                                    <option value="Ladakh">Ladakh</option>
+                                                    <option value="Lakshadweep">Lakshadweep</option>
+                                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                    <option value="Maharashtra">Maharashtra</option>
+                                                    <option value="Manipur">Manipur</option>
+                                                    <option value="Meghalaya">Meghalaya</option>
+                                                    <option value="Mizoram">Mizoram</option>
+                                                    <option value="Nagaland">Nagaland</option>
+                                                    <option value="Odisha">Odisha</option>
+                                                    <option value="Puducherry">Puducherry</option>
+                                                    <option value="Punjab">Punjab</option>
+                                                    <option value="Rajasthan">Rajasthan</option>
+                                                    <option value="Sikkim">Sikkim</option>
+                                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                                    <option value="Telangana">Telangana</option>
+                                                    <option value="Tripura">Tripura</option>
+                                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                    <option value="Uttarakhand">Uttarakhand</option>
+                                                    <option value="West Bengal">West Bengal</option>
+                                                </select>
+                                                <div class="invalid-feedback">Please select your state/UT.</div>
                                             </div>
                                         </div>
+                                        
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Region/Country (If born abroad):</label>
-                                                <input type="text" class="form-control" name="region_country" required
-                                                    minlength="1" maxlength="25">
+                                                <input type="text" class="form-control" name="region_country" 
+                                                    minlength="1" maxlength="25" placeholder="Enter Country here">
+                                                <div class="invalid-feedback">Please enter region/country.</div>    
                                             </div>
                                         </div>
 
                                         <!-- Row 6 -->
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Citizenship of India by:</label>
+                                                <label class="form-label">Citizenship of India by*:</label>
                                                 <select name="citizenship" class="form-control" required>
+                                                    <option value="">select options</option>
                                                     <option value="birth">Birth</option>
                                                     <option value="descent">Descent</option>
                                                     <option value="registration_naturalization">
                                                         Registration/Naturalization</option>
                                                 </select>
+                                                <div class="invalid-feedback">Please select your citizenship option.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Aadhar Card number:</label>
+                                                <label class="form-label">Aadhar Card number*:</label>
                                                 <input type="text" class="form-control" name="aadharNo" minlength="12"
-                                                    maxlength="12" required>
+                                                    maxlength="12" required placeholder="Enter Aadhar card number here">
+                                                <div class="invalid-feedback">Please enter your Aadhar Card number (12 digits).</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">PAN (If available):</label>
                                                 <input type="text" class="form-control" name="pan" minlength="10"
-                                                    maxlength="10">
+                                                    maxlength="10" placeholder=" Enter Pan number here">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Voter Id (If available):</label>
-                                                <input type="text" class="form-control" name="voterNo" minlength="10"
+                                                <input type="text" class="form-control" name="voterNo" minlength="10" placeholder="Enter the Voter Id number here"
                                                     maxlength="10">
                                             </div>
                                         </div>
@@ -344,6 +433,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Employment Type:</label>
                                                 <select name="employment_type" class="form-control" required>
+                                                    <option value="">select employment type</option>
                                                     <option value="psu">PSU</option>
                                                     <option value="government">Government</option>
                                                     <option value="statutory_body">Statutory Body</option>
@@ -360,13 +450,14 @@
                                                     <option value="x">Owners, Partners & Directors of companies which
                                                         are members of CII, FICCI & ASSOCHAM</option>
                                                 </select>
+                                                <div class="invalid-feedback">Please select your employment type.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">If employed in Government/Statutory Body/PSU,
                                                     specify organization name:</label>
-                                                <input type="text" class="form-control" name="organization_name"
+                                                <input type="text" class="form-control" name="organization_name" placeholder="Mention organization name here"
                                                     minlength="1" maxlength="30">
                                             </div>
                                         </div>
@@ -376,19 +467,21 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Educational Qualification:</label>
                                                 <select name="education" class="form-control" required>
+                                                    <option value="">select educational qualification</option>
                                                     <option value="7th_pass_or_less">7th pass or less</option>
                                                     <option value="between_8th_and_9th_standard">Between 8th and 9th
                                                         Standard</option>
                                                     <option value="10th_pass_and_above">10th pass and above</option>
                                                     <option value="graduate_and_above">Graduate and above</option>
                                                 </select>
+                                                <div class="invalid-feedback">Please select your educational qualification.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Visible Distinguishing Mark:</label>
-                                                <input type="text" class="form-control" name="distinguishing_mark"
-                                                    required minlength="1" maxlength="30">
+                                                <input type="text" class="form-control" name="distinguishing_mark" placeholder="Enter Visible marking here"
+                                                     minlength="1" maxlength="30">
                                             </div>
                                         </div>
 
@@ -397,14 +490,16 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Father's Name:</label>
                                                 <input type="text" class="form-control" name="father_name" required
-                                                    minlength="1" maxlength="30">
+                                                    minlength="1" maxlength="30" placeholder="Enter Father name here">
+                                                <div class="invalid-feedback">Please enter your father name.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Mother's Name:</label>
-                                                <input type="text" class="form-control" name="mother_name" required
+                                                <input type="text" class="form-control" name="mother_name" placeholder="Enter Mother's name here" required
                                                     minlength="1" maxlength="30">
+                                                <div class="invalid-feedback">Please enter your father name.</div>
                                             </div>
                                         </div>
 
@@ -412,7 +507,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Spouse's Name:</label>
-                                                <input type="text" class="form-control" name="spouse_name" minlength="1"
+                                                <input type="text" class="form-control" name="spouse_name" placeholder="Enter Spouse name here" minlength="1"
                                                     maxlength="30" placeholder="Spouse's Name (If married)">
                                             </div>
                                         </div>
@@ -430,6 +525,7 @@
                                                         id="non_ecr_no" value="no">
                                                     <label class="form-check-label" for="non_ecr">No</label>
                                                 </div>
+                                                <div class="invalid-feedback">Please select one option.</div>
                                             </div>
                                         </div>
                                     </div>
@@ -438,7 +534,7 @@
                                             <button type="button" class="btn btn-secondary me-2"
                                                 id="previousBtn">Previous</button>
                                             <button type="submit" class="btn btn-success me-2"
-                                                id="saveBtn">Save</button>
+                                                id="saveBtnApplicant">Save</button>
                                             <button type="button" class="btn btn-secondary me-2"
                                                 id="nextBtn">Next</button>
                                         </div>
@@ -450,19 +546,21 @@
                             <div class="tab-pane fade" id="residential" role="tabpanel"
                                 aria-labelledby="residential-tab">
                                 <!-- Residential Details Tab Content -->
-                                <form>
+                                <form id="passportAddressForm" class="needs-validation" novalidate>
                                     <div class="row g-3">
                                         <!-- Row 1 -->
                                         <div class="col-md-6 ">
                                             <div class="mb-1 mt-2">
-                                                <label class="form-label">House No. and Street Name:</label>
-                                                <input type="text" class="form-control" name="house_no_street">
+                                                <label class="form-label">House No. and Street Name*:</label>
+                                                <input type="text" class="form-control" name="house_no_street" placeholder="Enter House No. and Street Name" required>
+                                                <div class="invalid-feedback">Please enter House No. and Street Name.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-1 mt-2">
                                                 <label class="form-label">Address Lane 1:</label>
-                                                <input type="text" class="form-control" name="address_lane1">
+                                                <input type="text" class="form-control" name="address_lane1"  placeholder="Enter Address Lane 1">
+                                                <div class="invalid-feedback">Please enter Address Lane 1.</div>
                                             </div>
                                         </div>
 
@@ -470,20 +568,22 @@
                                         <div class="col-md-6">
                                             <div class="mb-1">
                                                 <label class="form-label">Address Lane 2:</label>
-                                                <input type="text" class="form-control" name="address_lane2">
+                                                <input type="text" class="form-control" name="address_lane2"  placeholder="Enter Address Lane 2">
+                                                <div class="invalid-feedback">Please enter Address Lane 2.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-1">
-                                                <label class="form-label">Village/Town/City:</label>
-                                                <input type="text" class="form-control" name="village_town_city">
+                                                <label class="form-label">Village/Town/City*:</label>
+                                                <input type="text" class="form-control" name="village_town_city" placeholder="Enter Village/Town/City" required>
+                                                <div class="invalid-feedback">Please enter Village/Town/City.</div>
                                             </div>
                                         </div>
 
                                         <!-- Row 3 -->
                                         <div class="col-md-6">
                                             <div class="mb-1">
-                                                <label class="form-label">District:</label>
+                                                <label class="form-label">District*:</label>
                                                 <select name="present_district" class="form-control" required>
                                                     <option value="">Select District</option>
                                                     <option value="Mumbai">Mumbai</option>
@@ -507,12 +607,12 @@
                                                     <option value="Jalna">Jalna</option>
                                                     <option value="Parbhani">Parbhani</option>
                                                 </select>
-
+                                                <div class="invalid-feedback">Please select District.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-1">
-                                                <label class="form-label">State/UT:</label>
+                                                <label class="form-label">State/UT*:</label>
                                                 <select name="present_state" class="form-control" required>
                                                     <option value="">Select State/UT</option>
                                                     <option value="Maharashtra">Maharashtra</option>
@@ -536,20 +636,21 @@
                                                     <option value="Himachal Pradesh">Himachal Pradesh</option>
                                                     <option value="Goa">Goa</option>
                                                 </select>
-
+                                                <div class="invalid-feedback">Please select State/UT.</div>
                                             </div>
                                         </div>
 
                                         <!-- Row 4 -->
                                         <div class="col-md-6">
                                             <div class="mb-1">
-                                                <label class="form-label">PIN:</label>
-                                                <input type="text" class="form-control" name="present_pin">
+                                                <label class="form-label">PIN*:</label>
+                                                <input type="text" class="form-control" name="present_pin" placeholder="Enter PIN" minlength="6" maxlength="6" required>
+                                                <div class="invalid-feedback">Please enter PIN.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-1">
-                                                <label class="form-label">Country:</label>
+                                                <label class="form-label">Country*:</label>
                                                 <select name="country" class="form-control" required>
                                                     <option value="">Select Country</option>
                                                     <option value="India">India</option>
@@ -573,7 +674,7 @@
                                                     <option value="New Zealand">New Zealand</option>
                                                     <option value="South Korea">South Korea</option>
                                                 </select>
-
+                                                <div class="invalid-feedback">Please select Country.</div>
                                             </div>
                                         </div>
 
@@ -581,22 +682,25 @@
                                         <div class="col-md-6">
                                             <div class="mb-1">
                                                 <label class="form-label">Mobile No.:</label>
-                                                <input type="tel" class="form-control" name="mobile_no">
+                                                <input type="tel" class="form-control" name="mobile_no" placeholder="Enter Mobile No." minlength="10" maxlength="10" required>
+                                                <div class="invalid-feedback">Please enter Mobile No.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-1">
                                                 <label class="form-label">Telephone No:</label>
-                                                <input type="tel" class="form-control" name="telephone_no"
+                                                <input type="tel" class="form-control" name="telephone_no" placeholder="Enter Telephone No."
                                                     minlength="10" maxlength="10">
+                                                <div class="invalid-feedback">Please enter Telephone No.</div>
                                             </div>
                                         </div>
 
                                         <!-- Row 6 -->
                                         <div class="col-md-6">
                                             <div class="mb-1">
-                                                <label class="form-label">Email ID:</label>
-                                                <input type="email" class="form-control" name="email">
+                                                <label class="form-label">Email ID*:</label>
+                                                <input type="email" class="form-control" name="email" placeholder="Enter Email ID" required>
+                                                <div class="invalid-feedback">Please enter Email ID.</div>
                                             </div>
                                         </div>
                                     </div>
@@ -605,7 +709,7 @@
                                             <button type="button" class="btn btn-secondary me-2"
                                                 id="previousBtn">Previous</button>
                                             <button type="submit" class="btn btn-success me-2"
-                                                id="saveBtn">Save</button>
+                                                id="saveBtnAddress">Save</button>
                                             <button type="button" class="btn btn-secondary me-2"
                                                 id="nextBtn">Next</button>
                                         </div>
@@ -613,24 +717,25 @@
                                 </form>
                             </div>
 
-
                             <div class="tab-pane fade" id="emergency" role="tabpanel" aria-labelledby="emergency-tab">
                                 <!-- Emergency Contact Tab Content -->
-                                <form>
+                                <form id="passportEmergencyForm" class="needs-validation" novalidate>
                                     <div class="row g-3">
                                         <!-- Row 1 -->
                                         <div class="col-md-6">
                                             <div class="mb-1 mt-2">
                                                 <label class="form-label">Contact Name:</label>
                                                 <input type="text" class="form-control" name="emergency_name" required
-                                                    minlength="1" maxlength="50" size="200">
+                                                    minlength="1" maxlength="50" size="200" placeholder="Please enter the name here">
+                                                <div class="invalid-feedback">Please enter Contact Name.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-1 mt-2">
                                                 <label class="form-label">Contact Address:</label>
                                                 <input type="text" class="form-control" name="emergency_address"
-                                                    required minlength="1" maxlength="50" size="200">
+                                                    required minlength="1" maxlength="50" size="200" placeholder="Please enter the address here">
+                                                <div class="invalid-feedback">Please enter Contact Address.</div>
                                             </div>
                                         </div>
 
@@ -639,14 +744,16 @@
                                             <div class="mb-1 ">
                                                 <label class="form-label">Mobile/Telephone No.:</label>
                                                 <input type="tel" class="form-control" name="emergency_contact_no"
-                                                    required minlength="10" maxlength="10" size="200">
+                                                    required minlength="10" maxlength="10" size="200" placeholder="Please enter the contact no here">
+                                                <div class="invalid-feedback">Please enter Mobile/Telephone No.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-1 ">
                                                 <label class="form-label">E-mail ID:</label>
                                                 <input type="email" class="form-control" name="emergency_contact_email"
-                                                    size="200" required>
+                                                    size="200" required placeholder="Please enter the email here">
+                                                    <div class="invalid-feedback">Please enter E-mail ID.</div>
                                             </div>
                                         </div>
 
@@ -654,13 +761,14 @@
                                         <div class="col-md-6">
                                             <div class="mb-1 ">
                                                 <label class="form-label">City:</label>
-                                                <input type="text" class="form-control" name="emergency_city">
+                                                <input type="text" class="form-control" name="emergency_city" placeholder="Please enter the city here">
+                                                <div class="invalid-feedback">Please enter City.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-1">
                                                 <label class="form-label">District:</label>
-                                                <select name="present_district" class="form-control" required>
+                                                <select name="emergency_district" class="form-control" required>
                                                     <option value="">Select District</option>
                                                     <option value="Mumbai">Mumbai</option>
                                                     <option value="Pune">Pune</option>
@@ -683,7 +791,7 @@
                                                     <option value="Jalna">Jalna</option>
                                                     <option value="Parbhani">Parbhani</option>
                                                 </select>
-
+                                                <div class="invalid-feedback">Please enter District.</div>
                                             </div>
                                         </div>
 
@@ -691,13 +799,14 @@
                                         <div class="col-md-6">
                                             <div class="mb-1 ">
                                                 <label class="form-label">PIN Code:</label>
-                                                <input type="text" class="form-control" name="emergency_pincode">
+                                                <input type="text" class="form-control" name="emergency_pincode" placeholder="Please enter the pincode here">
                                             </div>
+                                            <div class="invalid-feedback">Please enter PIN Code.</div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-1 ">
                                                 <label class="form-label">State:</label>
-                                                <select name="present_state" class="form-control" required>
+                                                <select name="emergency_state" class="form-control"  required>
                                                     <option value="">Select State/UT</option>
                                                     <option value="Maharashtra">Maharashtra</option>
                                                     <option value="Karnataka">Karnataka</option>
@@ -720,6 +829,7 @@
                                                     <option value="Himachal Pradesh">Himachal Pradesh</option>
                                                     <option value="Goa">Goa</option>
                                                 </select>
+                                                <div class="invalid-feedback">Please enter State.</div>
                                             </div>
                                         </div>
                                     </div>
@@ -728,7 +838,7 @@
                                             <button type="button" class="btn btn-secondary me-2"
                                                 id="previousBtn">Previous</button>
                                             <button type="submit" class="btn btn-success me-2"
-                                                id="saveBtn">Save</button>
+                                                id="saveBtnEmergency">Save</button>
                                             <button type="button" class="btn btn-secondary me-2"
                                                 id="nextBtn">Next</button>
                                         </div>
@@ -738,7 +848,7 @@
 
                             <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
                                 <!-- Other Tab Content -->
-                                <form>
+                                <form id="passportOtherForm" class="needs-validation" novalidate>
                                     <b class="mt-4">5.1 Provide the following details if the applicant criminal cases in
                                         India.</b>
                                     <div class="form-check py-1">
@@ -749,12 +859,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input"
-                                                name="criminal_proceedings_pending" value="yes">
+                                                name="criminal_proceedings_pending" value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input"
-                                                name="criminal_proceedings_pending" value="no">
+                                                name="criminal_proceedings_pending" value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -767,12 +877,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input" name="warrant_summons_pending"
-                                                value="yes">
+                                                value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input" name="warrant_summons_pending"
-                                                value="no">
+                                                value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -785,12 +895,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input" name="arrest_warrant_issued"
-                                                value="yes">
+                                                value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input" name="arrest_warrant_issued"
-                                                value="no">
+                                                value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -804,12 +914,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input" name="departure_prohibited"
-                                                value="yes">
+                                                value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input" name="departure_prohibited"
-                                                value="no">
+                                                value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -828,12 +938,12 @@
                                             in respect thereof to imprisonment for not less than two years?
                                             <div class="form-check form-check-inline ml-3">
                                                 <input type="radio" class="form-check-input"
-                                                    name="convicted_moral_turpitude" value="yes">
+                                                    name="convicted_moral_turpitude" value="yes" required>
                                                 <label class="form-check-label">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" class="form-check-input"
-                                                    name="convicted_moral_turpitude" value="no">
+                                                    name="convicted_moral_turpitude" value="no" required>
                                                 <label class="form-check-label">No</label>
                                             </div>
                                         </label>
@@ -849,12 +959,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input" name="refused_passport"
-                                                value="yes">
+                                                value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input" name="refused_passport"
-                                                value="no">
+                                                value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -865,12 +975,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input" name="passport_impounded"
-                                                value="yes">
+                                                value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input" name="passport_impounded"
-                                                value="no">
+                                                value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -881,12 +991,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input" name="passport_revoked"
-                                                value="yes">
+                                                value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input" name="passport_revoked"
-                                                value="no">
+                                                value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -900,12 +1010,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input" name="granted_citizenship"
-                                                value="yes">
+                                                value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input" name="granted_citizenship"
-                                                value="no">
+                                                value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -917,12 +1027,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input" name="held_foreign_passport"
-                                                value="yes">
+                                                value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input" name="held_foreign_passport"
-                                                value="no">
+                                                value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -933,12 +1043,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input"
-                                                name="surrendered_indian_passport" value="yes">
+                                                name="surrendered_indian_passport" value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input"
-                                                name="surrendered_indian_passport" value="no">
+                                                name="surrendered_indian_passport" value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -949,12 +1059,12 @@
                                         </label>
                                         <div class="form-check form-check-inline ml-3">
                                             <input type="radio" class="form-check-input"
-                                                name="renounced_indian_citizenship" value="yes">
+                                                name="renounced_indian_citizenship" value="yes" required>
                                             <label class="form-check-label">Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input"
-                                                name="renounced_indian_citizenship" value="no">
+                                                name="renounced_indian_citizenship" value="no" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                     </div>
@@ -963,137 +1073,131 @@
                                             <button type="button" class="btn btn-secondary me-2"
                                                 id="previousBtn">Previous</button>
                                             <button type="submit" class="btn btn-success me-2"
-                                                id="saveBtn">Save</button>
-                                            <button type="button" class="btn btn-secondary me-2" id="nextBtn">Next</button>
+                                                id="saveBtnOther">Save</button>
+                                            <button type="button" class="btn btn-secondary me-2"
+                                                id="nextBtn">Next</button>
                                         </div>
                                     </div>
                                 </form>
-
-
-
-
                             </div>
+
                             <div class=" tab-pane fade" id="declaration" role="tabpanel"
-                                                aria-labelledby="declaration-tab">
-                                                <!-- Self Declaration Tab Content -->
-                                                <form>
-                                                    <div class="form-check py-1">
-                                                        <p>I owe allegiance to the sovereignty, unity & integrity of
-                                                            India, and have not
-                                                            voluntarily acquired
-                                                            citizenship or
-                                                            travel document of any other country. I have not lost,
-                                                            surrendered or been
-                                                            deprived of the citizenship
-                                                            of India.
-                                                            I have not contravened any of the conditions relating to the
-                                                            possession and
-                                                            use
-                                                            of an Indian passport.
-                                                        </p>
+                                aria-labelledby="declaration-tab">
+                                <!-- Self Declaration Tab Content -->
+                                <form id="passportDeclarationForm" class="needs-validation" novalidate>
+                                    <div class="form-check py-1">
+                                        <p>I owe allegiance to the sovereignty, unity & integrity of
+                                            India, and have not
+                                            voluntarily acquired
+                                            citizenship or
+                                            travel document of any other country. I have not lost,
+                                            surrendered or been
+                                            deprived of the citizenship
+                                            of India.
+                                            I have not contravened any of the conditions relating to the
+                                            possession and
+                                            use
+                                            of an Indian passport.
+                                        </p>
 
-                                                        <p>
-                                                            I affirm that the information and particulars given by me in
-                                                            this form are
-                                                            true
-                                                            and correct. I further
-                                                            state that I
-                                                            am not suppressing any material information in this regard.
-                                                            I further affirm
-                                                            that the enclosures and
-                                                            documentary
-                                                            proof submitted in support of my application for an Indian
-                                                            passport are
-                                                            authentic and solely pertain to
-                                                            me and
-                                                            I am fully responsible for the accuracy of the same. I am
-                                                            liable to be
-                                                            penalized
-                                                            or prosecuted if found
-                                                            otherwise.
-                                                            I am aware that under the Passports Act, 1967 it is a
-                                                            criminal offence to
-                                                            furnish any false information
-                                                            or to
-                                                            suppress any material information with a view to obtaining
-                                                            passport or
-                                                            travel
-                                                            document.
-                                                        </p>
+                                        <p>
+                                            I affirm that the information and particulars given by me in
+                                            this form are
+                                            true
+                                            and correct. I further
+                                            state that I
+                                            am not suppressing any material information in this regard.
+                                            I further affirm
+                                            that the enclosures and
+                                            documentary
+                                            proof submitted in support of my application for an Indian
+                                            passport are
+                                            authentic and solely pertain to
+                                            me and
+                                            I am fully responsible for the accuracy of the same. I am
+                                            liable to be
+                                            penalized
+                                            or prosecuted if found
+                                            otherwise.
+                                            I am aware that under the Passports Act, 1967 it is a
+                                            criminal offence to
+                                            furnish any false information
+                                            or to
+                                            suppress any material information with a view to obtaining
+                                            passport or
+                                            travel
+                                            document.
+                                        </p>
 
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                id="termsCheckbox" required>
-                                                            <label class="form-check-label" for="termsCheckbox">
-                                                                <b>I have read and understood the contents of the above
-                                                                    and by
-                                                                    submitting this form certify that all the
-                                                                    information submitted by
-                                                                    me in the form is bonafide.</b>
-                                                            </label>
-                                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="termsCheckbox" required>
+                                            <label class="form-check-label" for="termsCheckbox">
+                                                <b>I have read and understood the contents of the above
+                                                    and by
+                                                    submitting this form certify that all the
+                                                    information submitted by
+                                                    me in the form is bonafide.</b>
+                                            </label>
+                                        </div>
 
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label class="form-group">Place:</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="declaration_place" required>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label class="form-group">Date:</label>
-                                                                <input type="date" class="form-control"
-                                                                    name="declaration_date" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <label class="form-group">
-                                                                Upload Signature/ Left Hand Thumb Impression of
-                                                                Applicant (If applicant
-                                                                is
-                                                                minor, either parent to
-                                                                sign):
-                                                            </label>
-                                                            <input type="file" class="form-control"
-                                                                name="applicant_signature" required>
-                                                        </div>
-                                                        <div class="row">
-                                                            <label class="form-group">
-                                                                Signature/ Left Hand Thumb Impression of Illiterate
-                                                                Applicant and Minors
-                                                                who
-                                                                cannot sign:
-                                                            </label>
-                                                            <input type="file" class="form-control"
-                                                                name="left_hand_thumb_imp" required>
-                                                        </div>
-                                                        <div class="row">
-                                                            <label class="form-group">
-                                                                Please upload your unsigned recent colour photograph
-                                                                with white
-                                                                background
-                                                                of
-                                                                size 4.5cm X 3.5cm:
-                                                            </label>
-                                                            <input type="file" class="form-control"
-                                                                name="applicant_photo" required>
-                                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="form-group">Place:</label>
+                                                <input type="text" class="form-control" name="declaration_place" placeholder="Enter place here"
+                                                    required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-group">Date:</label>
+                                                <input type="date" class="form-control" name="declaration_date"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="form-group">
+                                                Upload Signature/ Left Hand Thumb Impression of
+                                                Applicant (If applicant
+                                                is
+                                                minor, either parent to
+                                                sign):
+                                            </label>
+                                            <input type="file" class="form-control" name="applicant_signature" required>
+                                        </div>
+                                        <div class="row">
+                                            <label class="form-group">
+                                                Signature/ Left Hand Thumb Impression of Illiterate
+                                                Applicant and Minors
+                                                who
+                                                cannot sign:
+                                            </label>
+                                            <input type="file" class="form-control" name="left_hand_thumb_imp" required>
+                                        </div>
+                                        <div class="row">
+                                            <label class="form-group">
+                                                Please upload your unsigned recent colour photograph
+                                                with white
+                                                background
+                                                of
+                                                size 4.5cm X 3.5cm:
+                                            </label>
+                                            <input type="file" class="form-control" name="applicant_photo" required>
+                                        </div>
 
-                                                    </div>
-                                                    <div class="row mb-3 mt-3">
-                                                        <div class="form-buttons text-center mt-1">
-                                                            <button type="button" class="btn btn-secondary me-2" id="previousBtn">Previous</button>
-                                                            <button type="submit" class="btn btn-success me-2" id="submitBtn">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="form-buttons text-center mt-1">
+                                            <button type="button" class="btn btn-secondary me-2"
+                                                id="previousBtn">Previous</button>
+                                            <button type="submit" class="btn btn-success me-2"
+                                                id="submitBtn">Submit</button>
                                         </div>
                                     </div>
-
-
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </main>
 
     <footer class="bg-dark text-white text-center py-3">
@@ -1129,46 +1233,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 
     <!-- SweetAlert2 library -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    
 
     <!-- Your Custom Scripts -->
-    <script src="./assets/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            // Function to show the next tab
-            function showNextTab() {
-                let activeTab = document.querySelector('.nav-tabs .nav-link.active');
-                if (activeTab) {
-                    let nextTab = activeTab.parentElement.nextElementSibling;
-                    if (nextTab) {
-                        nextTab.querySelector('.nav-link').click();
-                    }
-                }
-            }
-
-            // Function to show the previous tab
-            function showPreviousTab() {
-                let activeTab = document.querySelector('.nav-tabs .nav-link.active');
-                if (activeTab) {
-                    let previousTab = activeTab.parentElement.previousElementSibling;
-                    if (previousTab) {
-                        previousTab.querySelector('.nav-link').click();
-                    }
-                }
-            }
-
-            // Attach event listeners to the Next and Previous buttons
-            document.querySelectorAll('#nextBtn').forEach(button => {
-                button.addEventListener('click', showNextTab);
-            });
-
-            document.querySelectorAll('#previousBtn').forEach(button => {
-                button.addEventListener('click', showPreviousTab);
-            });
-        });
-
-
-    </script>
+    <!-- <script src="./assets/js/main.js"></script> -->
+    <script src="./assets/js/newApplication.js"></script>
 
 </body>
 
