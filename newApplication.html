@@ -218,12 +218,12 @@
                                                     (aliases)?</label>
                                                 <div class="form-check form-check-inline">
                                                     <input type="radio" class="form-check-input"
-                                                        name="known_by_other_names" id="aliases_yes" value="yes">
+                                                        name="known_by_other_names" id="aliases_yes" value="yes" required>
                                                     <label class="form-check-label" for="aliases_yes">Yes</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input type="radio" class="form-check-input"
-                                                        name="known_by_other_names" id="aliases_no" value="no">
+                                                        name="known_by_other_names" id="aliases_no" value="no" requireds>
                                                     <label class="form-check-label" for="aliases_no">No</label>
                                                 </div>
                                                 <input type="text" class="form-control mt-2" name="aliases"
@@ -234,12 +234,12 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Have you ever changed your name?</label>
                                                 <div class="form-check form-check-inline">
-                                                    <input type="radio" class="form-check-input" name="changed_name"
+                                                    <input type="radio" class="form-check-input" name="changed_name" required
                                                         id="changed_name_yes" value="yes">
                                                     <label class="form-check-label" for="changed_name_yes">Yes</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input type="radio" class="form-check-input" name="changed_name"
+                                                    <input type="radio" class="form-check-input" name="changed_name" required
                                                         id="changed_name_no" value="no">
                                                     <label class="form-check-label" for="changed_name_no">No</label>
                                                 </div>
@@ -255,16 +255,16 @@
                                                 <label class="form-label">Gender*:</label>
                                                 <div class="form-check form-check-inline">
                                                     <input type="radio" class="form-check-input" name="gender"
-                                                        id="gender_male" value="male">
+                                                        id="gender_male" value="male" required>
                                                     <label class="form-check-label" for="gender_male">Male</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input type="radio" class="form-check-input" name="gender"
-                                                        id="gender_female" value="female">
-                                                    <label class="form-check-label" for="gender_female">Female</label>
+                                                        id="gender_female" value="female" required>
+                                                    <label class="form-check-label" for="gender_female" >Female</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input type="radio" class="form-check-input" name="gender"
+                                                    <input type="radio" class="form-check-input" name="gender" required
                                                         id="gender_transgender" value="transgender">
                                                     <label class="form-check-label"
                                                         for="gender_transgender">Transgender</label>
